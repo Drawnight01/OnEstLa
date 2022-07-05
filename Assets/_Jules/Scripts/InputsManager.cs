@@ -76,6 +76,6 @@ public class InputsManager : MonoBehaviour
 
     public void CheckVictory()
     {
-
+        
     }
 }
