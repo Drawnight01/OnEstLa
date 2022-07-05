@@ -713,8 +713,12 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _NumInstrument: 4
+  fx_Note: {fileID: 4692282453731533310, guid: 8407349385de2104093d6e35c70525db, type: 3}
   multiplicateur: 1
   valData: 0
+  waitSeconds: 0.1
+  compteur: 0
+  compare: 0.05
 --- !u!1 &1108673528
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,8 +891,12 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _NumInstrument: 1
+  fx_Note: {fileID: 4692282453731533310, guid: 8407349385de2104093d6e35c70525db, type: 3}
   multiplicateur: 5
   valData: 0
+  waitSeconds: 0.1
+  compteur: 0
+  compare: 0.02
 --- !u!4 &1308198985
 Transform:
   m_ObjectHideFlags: 0
@@ -916,7 +924,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 41170886cd1296b4fa3ab39a71e19f50, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.902
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1187,8 +1195,12 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _NumInstrument: 5
+  fx_Note: {fileID: 4692282453731533310, guid: 8407349385de2104093d6e35c70525db, type: 3}
   multiplicateur: 5
   valData: 0
+  waitSeconds: 0.15
+  compteur: 0
+  compare: 0.07
 --- !u!1 &1432511936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,8 +1388,12 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _NumInstrument: 3
+  fx_Note: {fileID: 4692282453731533310, guid: 8407349385de2104093d6e35c70525db, type: 3}
   multiplicateur: 1
   valData: 0
+  waitSeconds: 0.2
+  compteur: 0
+  compare: 0.1
 --- !u!1 &1509540501
 GameObject:
   m_ObjectHideFlags: 0
@@ -1644,8 +1660,12 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _NumInstrument: 2
+  fx_Note: {fileID: 4692282453731533310, guid: 8407349385de2104093d6e35c70525db, type: 3}
   multiplicateur: 1
   valData: 0
+  waitSeconds: 0.1
+  compteur: 0
+  compare: 0.15
 --- !u!1 &1789253487
 GameObject:
   m_ObjectHideFlags: 0
