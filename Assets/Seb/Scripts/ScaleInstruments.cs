@@ -9,51 +9,80 @@ public class ScaleInstruments : MonoBehaviour
     public AudioMixer _Mixer;
     public AudioSource _Source;
 
-    public float smoothTime;
+    public float smoothTime;    
     public AnimationCurve smoothCurve;
-    public Animator animController;
-
+    
+    
     public string _NumInstrument;
+
+    public GameObject fx_Note;
 
     public float multiplicateur = 1f;
 
+    public float valData;
     private Player player;
     private float newdata;
+
+
+    public float waitSeconds;
+    public int compteur;
+    public float compare;
 
     private void Start()
     {
         _Source = GetComponent<AudioSource>();
         player = GameObject.Find("Player").GetComponent<Player>();
-        animController = GetComponent<Animator>();
+        
+    }
+
+    
+    public void SpawnFX()
+    {
+        if(compteur == 0 && valData > compare)
+        {
+            compteur = 1;
+            GameObject obj = Instantiate(fx_Note, transform);
+            Destroy(obj, 1f);
+            StartCoroutine(TimerSpawn());
+        }     
+        
+    }
+
+    IEnumerator TimerSpawn()
+    {
+        yield return new WaitForSeconds(waitSeconds);
+        compteur = 0;
     }
 
     public void RefreshVal()
     {
         _Source.volume = (player.GetMasterLevel("Volume_"+_NumInstrument) + 80f) / 100f;
-        animController.SetFloat("Volume", _Source.volume);
-        
         _Source.pitch = player.GetMasterLevel("Pitch_"+_NumInstrument);
-        animController.SetFloat("Pitch", _Source.pitch);
+        
     }
+
+    
     
     void OnAudioFilterRead(float[] data, int channels)
     {        
         for (int i = 0; i < data.Length; ++i)
         {
-            newdata = 1 -(data[i] * multiplicateur);
+            valData = data[i]; 
+            newdata = 1 + (valData * multiplicateur);
         }        
     }
 
     private void Update()
     {
         RefreshVal();
-
+        AutoScale();
+        SpawnFX();
     }
 
+    
     private void AutoScale()
-    {
-        
-        Vector3 vect = Vector3.Lerp(Vector3.one, (new Vector3(newdata, newdata, newdata)), smoothCurve.Evaluate(Time.deltaTime * smoothTime));
-        transform.localScale = vect;
+    {        
+        Vector3 vect = Vector3.Slerp(transform.localScale, new Vector3(newdata, newdata, newdata), smoothCurve.Evaluate(Time.deltaTime * valData * smoothTime));
+        transform.localScale = vect;               
     }
 }
