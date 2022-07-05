@@ -12,7 +12,7 @@ public class VolumePitchManager : MonoBehaviour
     private void Start()
     {
         isMistaking = false;
-        int index = 0;
+        index = 0;
     }
 
     public int CheckProblem()
