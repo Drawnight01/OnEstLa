@@ -28,53 +28,55 @@ public class InputsManager : MonoBehaviour
         Debug.DrawRay(mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y)), mainCam.transform.forward);
         if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit))
         {
-                Debug.Log(hit.collider.name);
+                //Debug.Log(hit.collider.name);
 
                 scriptCollider = hit.collider.gameObject.GetComponent<VolumePitchManager>();
-
-                if(scriptCollider.isMistaking == true) //condition sur le fait que le groupe soit dans l'erreur
+                if(scriptCollider != null)
                 {
-                    Debug.Log("troisieme if");
-                    mousePos1 = Input.mousePosition;
-            
-                    yield return new WaitForSeconds(0.03f);
-
-                    mousePos2 = Input.mousePosition;
-
-                    xDiff = mousePos2.x - mousePos1.x;
-                    yDiff = mousePos2.y - mousePos1.y;
-
-                    pbIndex = scriptCollider.index;
-                    Debug.Log("on mouse = "+pbIndex);
-
-                    switch (pbIndex)
+                    if(scriptCollider.isMistaking == true) //condition sur le fait que le groupe soit dans l'erreur
                     {
-                        default:
-                            Debug.Log("They ain't making any mistake");
-                        break;
+                        //Debug.Log("troisieme if");
+                        mousePos1 = Input.mousePosition;
+                
+                        yield return new WaitForSeconds(0.03f);
 
-                        case 1 :
-                            if (xDiff < 0 && Mathf.Abs(yDiff) < Mathf.Abs(xDiff))
-                                scriptCollider.ResolveProblem("Pitch_"+this.GetComponent<>()._NumInstrument);
+                        mousePos2 = Input.mousePosition;
+
+                        xDiff = mousePos2.x - mousePos1.x;
+                        yDiff = mousePos2.y - mousePos1.y;
+
+                        pbIndex = scriptCollider.index;
+                        //Debug.Log("on mouse = "+pbIndex);
+
+                        switch (pbIndex)
+                        {
+                            default:
+                                Debug.Log("They ain't making any mistake");
                             break;
 
-                        case 2 :
-                            if (xDiff > 0 && Mathf.Abs(yDiff) < Mathf.Abs(xDiff))
-                                scriptCollider.ResolveProblem();
-                            break;
+                            case 1 :
+                                if (xDiff < 0 && Mathf.Abs(yDiff) < Mathf.Abs(xDiff))
+                                    scriptCollider.ResolveProblem("Pitch_"+scriptCollider.transform.parent.gameObject.GetComponent<ScaleInstruments>()._NumInstrument);
+                                break;
 
-                        case 3 : 
-                            if (yDiff < 0 && Mathf.Abs(yDiff) > Mathf.Abs(xDiff))
-                                scriptCollider.ResolveProblem();
-                            break;
+                            case 2 :
+                                if (xDiff > 0 && Mathf.Abs(yDiff) < Mathf.Abs(xDiff))
+                                    scriptCollider.ResolveProblem("Pitch_"+scriptCollider.transform.parent.gameObject.GetComponent<ScaleInstruments>()._NumInstrument);
+                                break;
 
-                        case 4 :
-                            if (yDiff > 0 && Mathf.Abs(yDiff) > Mathf.Abs(xDiff))
-                                scriptCollider.ResolveProblem();
-                            break;
-                    } 
+                            case 3 : 
+                                if (yDiff < 0 && Mathf.Abs(yDiff) > Mathf.Abs(xDiff))
+                                    scriptCollider.ResolveProblem("Volume_"+scriptCollider.transform.parent.gameObject.GetComponent<ScaleInstruments>()._NumInstrument);
+                                break;
+
+                            case 4 :
+                                if (yDiff > 0 && Mathf.Abs(yDiff) > Mathf.Abs(xDiff))
+                                    scriptCollider.ResolveProblem("Volume_"+scriptCollider.transform.parent.gameObject.GetComponent<ScaleInstruments>()._NumInstrument);
+                                break;
+                        } 
+                    }
+                    else Debug.Log("The group ain't making any mistake");
                 }
-                else Debug.Log("The group ain't making any mistake");
             
         }
     }

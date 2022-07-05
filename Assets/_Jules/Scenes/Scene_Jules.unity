@@ -158,6 +158,8 @@ MonoBehaviour:
   isMistaking: 0
   index: 0
   _Mixer: {fileID: 24100000, guid: f1917ddf6e252a14bbca179b6935bab7, type: 2}
+  redMat: {fileID: 0}
+  greenMat: {fileID: 0}
 --- !u!65 &349401
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -482,6 +484,8 @@ MonoBehaviour:
   isMistaking: 0
   index: 0
   _Mixer: {fileID: 24100000, guid: f1917ddf6e252a14bbca179b6935bab7, type: 2}
+  redMat: {fileID: 2100000, guid: 470445b49b293134ab20e0875a87d9ad, type: 2}
+  greenMat: {fileID: 2100000, guid: 978722ad98eb18044b67f3bbacce621c, type: 2}
 --- !u!1 &265493242
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +536,8 @@ MonoBehaviour:
   isMistaking: 0
   index: 0
   _Mixer: {fileID: 24100000, guid: f1917ddf6e252a14bbca179b6935bab7, type: 2}
+  redMat: {fileID: 0}
+  greenMat: {fileID: 0}
 --- !u!95 &265493245
 Animator:
   serializedVersion: 3
@@ -757,6 +763,8 @@ MonoBehaviour:
   isMistaking: 0
   index: 0
   _Mixer: {fileID: 24100000, guid: f1917ddf6e252a14bbca179b6935bab7, type: 2}
+  redMat: {fileID: 0}
+  greenMat: {fileID: 0}
 --- !u!95 &276975973
 Animator:
   serializedVersion: 3
@@ -1046,6 +1054,8 @@ MonoBehaviour:
   isMistaking: 0
   index: 0
   _Mixer: {fileID: 0}
+  redMat: {fileID: 0}
+  greenMat: {fileID: 0}
 --- !u!54 &282412968
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1174,6 +1184,8 @@ MonoBehaviour:
   isMistaking: 0
   index: 0
   _Mixer: {fileID: 24100000, guid: f1917ddf6e252a14bbca179b6935bab7, type: 2}
+  redMat: {fileID: 2100000, guid: 470445b49b293134ab20e0875a87d9ad, type: 2}
+  greenMat: {fileID: 2100000, guid: 978722ad98eb18044b67f3bbacce621c, type: 2}
 --- !u!1 &593102295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,7 +1311,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listScripts: []
-  val: 10
+  valPitch: 0.5
+  valVolume: 10
 --- !u!114 &593102302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1444,6 +1457,8 @@ MonoBehaviour:
   isMistaking: 0
   index: 0
   _Mixer: {fileID: 24100000, guid: f1917ddf6e252a14bbca179b6935bab7, type: 2}
+  redMat: {fileID: 0}
+  greenMat: {fileID: 0}
 --- !u!95 &714859024
 Animator:
   serializedVersion: 3
@@ -1573,6 +1588,8 @@ MonoBehaviour:
   isMistaking: 0
   index: 0
   _Mixer: {fileID: 24100000, guid: f1917ddf6e252a14bbca179b6935bab7, type: 2}
+  redMat: {fileID: 0}
+  greenMat: {fileID: 0}
 --- !u!65 &718805504
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1828,6 +1845,8 @@ MonoBehaviour:
   isMistaking: 0
   index: 0
   _Mixer: {fileID: 24100000, guid: f1917ddf6e252a14bbca179b6935bab7, type: 2}
+  redMat: {fileID: 2100000, guid: 470445b49b293134ab20e0875a87d9ad, type: 2}
+  greenMat: {fileID: 2100000, guid: 978722ad98eb18044b67f3bbacce621c, type: 2}
 --- !u!1 &1021435547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1878,6 +1897,8 @@ MonoBehaviour:
   isMistaking: 0
   index: 0
   _Mixer: {fileID: 24100000, guid: f1917ddf6e252a14bbca179b6935bab7, type: 2}
+  redMat: {fileID: 0}
+  greenMat: {fileID: 0}
 --- !u!95 &1021435550
 Animator:
   serializedVersion: 3
@@ -2165,6 +2186,8 @@ MonoBehaviour:
   isMistaking: 0
   index: 0
   _Mixer: {fileID: 24100000, guid: f1917ddf6e252a14bbca179b6935bab7, type: 2}
+  redMat: {fileID: 2100000, guid: 470445b49b293134ab20e0875a87d9ad, type: 2}
+  greenMat: {fileID: 2100000, guid: 978722ad98eb18044b67f3bbacce621c, type: 2}
 --- !u!1 &1237853546
 GameObject:
   m_ObjectHideFlags: 0
@@ -2408,6 +2431,8 @@ MonoBehaviour:
   isMistaking: 0
   index: 0
   _Mixer: {fileID: 24100000, guid: f1917ddf6e252a14bbca179b6935bab7, type: 2}
+  redMat: {fileID: 0}
+  greenMat: {fileID: 0}
 --- !u!95 &1638909315
 Animator:
   serializedVersion: 3
@@ -2595,6 +2620,7 @@ GameObject:
   - component: {fileID: 1656340297}
   - component: {fileID: 1656340296}
   - component: {fileID: 1656340298}
+  - component: {fileID: 1656340299}
   m_Layer: 0
   m_Name: Cube1
   m_TagString: Untagged
@@ -2681,6 +2707,21 @@ MonoBehaviour:
   isMistaking: 0
   index: 0
   _Mixer: {fileID: 24100000, guid: f1917ddf6e252a14bbca179b6935bab7, type: 2}
+  redMat: {fileID: 2100000, guid: 470445b49b293134ab20e0875a87d9ad, type: 2}
+  greenMat: {fileID: 2100000, guid: 978722ad98eb18044b67f3bbacce621c, type: 2}
+--- !u!65 &1656340299
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656340294}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.99999994, y: 1, z: 0.99999994}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1758749376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2809,6 +2850,8 @@ MonoBehaviour:
   isMistaking: 0
   index: 0
   _Mixer: {fileID: 24100000, guid: f1917ddf6e252a14bbca179b6935bab7, type: 2}
+  redMat: {fileID: 0}
+  greenMat: {fileID: 0}
 --- !u!65 &1805258861
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2921,6 +2964,8 @@ MonoBehaviour:
   isMistaking: 0
   index: 0
   _Mixer: {fileID: 24100000, guid: f1917ddf6e252a14bbca179b6935bab7, type: 2}
+  redMat: {fileID: 0}
+  greenMat: {fileID: 0}
 --- !u!65 &1936284542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3033,6 +3078,8 @@ MonoBehaviour:
   isMistaking: 0
   index: 0
   _Mixer: {fileID: 24100000, guid: f1917ddf6e252a14bbca179b6935bab7, type: 2}
+  redMat: {fileID: 0}
+  greenMat: {fileID: 0}
 --- !u!65 &1988827772
 BoxCollider:
   m_ObjectHideFlags: 0
