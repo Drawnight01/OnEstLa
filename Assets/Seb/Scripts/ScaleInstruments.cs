@@ -9,14 +9,15 @@ public class ScaleInstruments : MonoBehaviour
     public AudioMixer _Mixer;
     public AudioSource _Source;
 
-    public float smoothTime;
+    public float smoothTime;    
     public AnimationCurve smoothCurve;
-    public Animator animController;
-
+    
+    
     public string _NumInstrument;
 
     public float multiplicateur = 1f;
 
+    public float valData;
     private Player player;
     private float newdata;
 
@@ -24,36 +25,35 @@ public class ScaleInstruments : MonoBehaviour
     {
         _Source = GetComponent<AudioSource>();
         player = GameObject.Find("Player").GetComponent<Player>();
-        animController = GetComponent<Animator>();
+        
     }
 
     public void RefreshVal()
     {
         _Source.volume = (player.GetMasterLevel("Volume_"+_NumInstrument) + 80f) / 100f;
-        animController.SetFloat("Volume", _Source.volume);
-        
         _Source.pitch = player.GetMasterLevel("Pitch_"+_NumInstrument);
-        animController.SetFloat("Pitch", _Source.pitch);
+        Debug.Log("Pitch_" + _NumInstrument + " : " + newdata);
     }
     
     void OnAudioFilterRead(float[] data, int channels)
     {        
         for (int i = 0; i < data.Length; ++i)
         {
-            newdata = 1 -(data[i] * multiplicateur);
+            valData = 1 - (data[i] * multiplicateur);
+            newdata = valData;
         }        
     }
 
     private void Update()
     {
         RefreshVal();
-
+        AutoScale();
     }
 
+    
     private void AutoScale()
-    {
-        
-        Vector3 vect = Vector3.Lerp(Vector3.one, (new Vector3(newdata, newdata, newdata)), smoothCurve.Evaluate(Time.deltaTime * smoothTime));
-        transform.localScale = vect;
+    {        
+        Vector3 vect = Vector3.Lerp(transform.localScale, new Vector3(newdata, newdata, newdata), smoothCurve.Evaluate(Time.deltaTime * valData * smoothTime));
+        transform.localScale = vect;               
     }
 }
