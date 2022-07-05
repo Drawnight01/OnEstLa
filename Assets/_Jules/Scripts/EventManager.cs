@@ -59,7 +59,6 @@ public class EventManager : MonoBehaviour
 
         Debug.Log("generate = "+indexProblem);
 
-        //celui ciiiiiiiiiiiiiiiiiii !!!!!!!!!!!!!!!!!!!!!!!
         switch (indexProblem)
         {
             default:

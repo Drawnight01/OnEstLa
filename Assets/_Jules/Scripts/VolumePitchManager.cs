@@ -15,8 +15,13 @@ public class VolumePitchManager : MonoBehaviour
         index = 0;
     }
 
-    public void ResolveProblem()
+    public void ResolveProblem(string parameter)
     {
+        //parmetre son = 0 ou 0.8 environ, param pitch = 100%
+        if(parameter.Length <= 7) //if pitch 
+            SetParam(parameter, 100);
+        else SetParam(parameter, 0); // if volume
+
         isMistaking = false;
         Debug.Log("REUSSIIIIIIIII !!!!!!!!");
     }
@@ -47,5 +52,10 @@ public class VolumePitchManager : MonoBehaviour
         float val = GetMasterLevel(name);
         val -= value;
         _Mixer.SetFloat(name, val);
+    }
+
+    public void SetParam(string name, float value)
+    {        
+        _Mixer.SetFloat(name, value);
     }
 }
