@@ -1,1 +1,52 @@
-{}
+{
+    "name": "New Controls",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "dc69be6d-5205-4e98-af3f-d09399cdada5",
+            "actions": [
+                {
+                    "name": "MousePos",
+                    "type": "Value",
+                    "id": "798530b0-4671-4685-8261-9f8c596e7d41",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MouseLeft",
+                    "type": "Button",
+                    "id": "adb7c8d1-6c87-493a-860e-cfb9ac5fa53c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "12c39e70-f742-462d-aee5-84d787cf93d8",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4b41a57-e78e-4a49-8d63-5ac77649381f",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
