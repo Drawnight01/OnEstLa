@@ -39,8 +39,9 @@ public class ScaleInstruments : MonoBehaviour
     {        
         for (int i = 0; i < data.Length; ++i)
         {
-            valData = 1 - (data[i] * multiplicateur);
-            newdata = valData;
+            valData = data[i];
+            
+            newdata = 1 + (valData * multiplicateur);
         }        
     }
 
