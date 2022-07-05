@@ -26,14 +26,16 @@ public class InputsManager : MonoBehaviour
 
     public IEnumerator OnMouseLeft ()
     {
-        if (Physics.Raycast(mainCam.ScreenToWorldPoint(Input.mousePosition), new Vector3(-100,0,0), out hit, Mathf.Infinity))
+        Debug.DrawRay(mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y)), mainCam.transform.forward);
+        if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit))
         {
-            if(hit.collider.gameObject.GetComponent<VolumePitchManager>() != null)
-            {
+                Debug.Log(hit.collider.name);
+
                 scriptCollider = hit.collider.gameObject.GetComponent<VolumePitchManager>();
 
-                if(scriptCollider.isMistaking) //condition sur le fait que le groupe soit dans l'erreur
+                if(scriptCollider.isMistaking == true) //condition sur le fait que le groupe soit dans l'erreur
                 {
+                    Debug.Log("troisieme if");
                     mousePos1 = Input.mousePosition;
             
                     yield return new WaitForSeconds(0.03f);
@@ -43,8 +45,8 @@ public class InputsManager : MonoBehaviour
                     xDiff = mousePos2.x - mousePos1.x;
                     yDiff = mousePos2.y - mousePos1.y;
 
-                    pbIndex = scriptCollider.CheckProblem();
-                    Debug.Log(pbIndex);
+                    pbIndex = scriptCollider.index;
+                    Debug.Log("on mouse = "+pbIndex);
 
                     switch (pbIndex)
                     {
@@ -74,7 +76,7 @@ public class InputsManager : MonoBehaviour
                     } 
                 }
                 else Debug.Log("The group ain't making any mistake");
-            }
+            
         }
     }
 

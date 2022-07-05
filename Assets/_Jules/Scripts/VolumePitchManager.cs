@@ -15,11 +15,6 @@ public class VolumePitchManager : MonoBehaviour
         index = 0;
     }
 
-    public int CheckProblem()
-    {  
-        return index;
-    }
-
     public void ResolveProblem()
     {
         isMistaking = false;
@@ -51,6 +46,6 @@ public class VolumePitchManager : MonoBehaviour
     {
         float val = GetMasterLevel(name);
         val -= value;
-        _Mixer.SetFloat(this.name, val);
+        _Mixer.SetFloat(name, val);
     }
 }

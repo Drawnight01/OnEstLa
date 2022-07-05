@@ -15,7 +15,7 @@ public class EventManager : MonoBehaviour
 
         FillList();
 
-        float rand = Random.Range(0.3f, 2f);
+        float rand = Random.Range(2f, 10f);
         InvokeRepeating("GenerateEvent", 1, rand);
 
         //InvokeRepeating("UpdateList", 1, 1);
@@ -27,12 +27,12 @@ public class EventManager : MonoBehaviour
     {
         for (int i = 0; i < instruments.transform.childCount; i++)
         {
-            VolumePitchManager scriptI_VP = instruments.transform.GetChild(i).gameObject.GetComponent<VolumePitchManager>();
+            VolumePitchManager scriptI_VP = instruments.transform.GetChild(i).GetChild(0).gameObject.GetComponent<VolumePitchManager>();
             ScaleInstruments scriptI_Scale = instruments.transform.GetChild(i).gameObject.GetComponent<ScaleInstruments>();
 
-            Debug.Log(scriptI_VP.GetMasterLevel("Volume_" + scriptI_Scale._NumInstrument));
+            //Debug.Log(scriptI_VP.GetMasterLevel("Volume_" + scriptI_Scale._NumInstrument));
             if (!listScripts.Contains(scriptI_VP) && scriptI_VP.GetMasterLevel("Volume_" + scriptI_Scale._NumInstrument) > 0)
-                listScripts.Add(instruments.transform.GetChild(i).gameObject.GetComponent<VolumePitchManager>());
+                listScripts.Add(instruments.transform.GetChild(i).GetChild(0).gameObject.GetComponent<VolumePitchManager>());
         }
     }
 
@@ -40,7 +40,7 @@ public class EventManager : MonoBehaviour
     {
         foreach (VolumePitchManager script in listScripts)
         {
-            if (script.GetMasterLevel("Volume_" + script.gameObject.GetComponent<ScaleInstruments>()._NumInstrument) <= 0) 
+            if (script.GetMasterLevel("Volume_" + script.transform.parent.gameObject.GetComponent<ScaleInstruments>()._NumInstrument) <= 0) 
                 listScripts.Remove(script);
         }
     }
@@ -57,7 +57,7 @@ public class EventManager : MonoBehaviour
         listScripts[indexScript].index = indexProblem;
         listScripts[indexScript].isMistaking = true;
 
-        Debug.Log(indexProblem);
+        Debug.Log("generate = "+indexProblem);
 
         //celui ciiiiiiiiiiiiiiiiiii !!!!!!!!!!!!!!!!!!!!!!!
         switch (indexProblem)
@@ -67,22 +67,22 @@ public class EventManager : MonoBehaviour
                 break;
 
             case 1 :
-                string name1 = listScripts[indexScript].gameObject.GetComponent<ScaleInstruments>()._NumInstrument;
+                string name1 = listScripts[indexScript].transform.parent.gameObject.GetComponent<ScaleInstruments>()._NumInstrument;
                 listScripts[indexScript].Up("Pitch_" + name1, val);
                 break;
 
             case 2 :
-                string name2 = listScripts[indexScript].gameObject.GetComponent<ScaleInstruments>()._NumInstrument;
+                string name2 = listScripts[indexScript].transform.parent.gameObject.GetComponent<ScaleInstruments>()._NumInstrument;
                 listScripts[indexScript].Down("Pitch_" + name2, val);
                 break;
 
             case 3 : 
-                string name3 = listScripts[indexScript].gameObject.GetComponent<ScaleInstruments>()._NumInstrument;
+                string name3 = listScripts[indexScript].transform.parent.gameObject.GetComponent<ScaleInstruments>()._NumInstrument;
                 listScripts[indexScript].Up("Volume_" + name3, val);
                 break;
 
             case 4 :
-                string name4 = listScripts[indexScript].gameObject.GetComponent<ScaleInstruments>()._NumInstrument;
+                string name4 = listScripts[indexScript].transform.parent.gameObject.GetComponent<ScaleInstruments>()._NumInstrument;
                 listScripts[indexScript].Down("Volume_" + name4, val);
                 break;
         }
