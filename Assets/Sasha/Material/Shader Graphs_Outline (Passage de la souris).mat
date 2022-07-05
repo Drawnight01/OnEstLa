@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Groupe lumineux
-  m_Shader: {fileID: -6465566751694194690, guid: 6f19f11ba465a4f40a4b59447b30ee25, type: 3}
+  m_Name: Shader Graphs_Outline (Passage de la souris)
+  m_Shader: {fileID: -6465566751694194690, guid: b6374ec744c212140b1134b59d0cb276, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,10 +19,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Texture2D:
-        m_Texture: {fileID: 2800000, guid: 70faf1788fe308c4e81b584243e143d1, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -37,8 +33,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - EdgeFallof: -2.32
-    - Opacit: -1.06
+    - Largeur: -0.5
+    - Outline_Thickness: 0.14
+    - Scale: 2.64
     m_Colors:
-    - _Color: {r: 1, g: 0.8421823, b: 0.3433962, a: 1}
+    - Color_Outline: {r: 1, g: 0.7462454, b: 0, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
