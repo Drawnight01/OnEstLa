@@ -20,7 +20,6 @@ public class InputsManager : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
              StartCoroutine(OnMouseLeft());
-        
         CheckVictory();
     }
 
@@ -56,7 +55,7 @@ public class InputsManager : MonoBehaviour
 
                         case 1 :
                             if (xDiff < 0 && Mathf.Abs(yDiff) < Mathf.Abs(xDiff))
-                                scriptCollider.ResolveProblem();
+                                scriptCollider.ResolveProblem("Pitch_"+this.GetComponent<>()._NumInstrument);
                             break;
 
                         case 2 :
