@@ -8,6 +8,7 @@ public class VolumePitchManager : MonoBehaviour
     public bool isMistaking;
     public int index;
     public AudioMixer _Mixer;
+    public Material redMat, greenMat;
     
     private void Start()
     {
@@ -15,11 +16,19 @@ public class VolumePitchManager : MonoBehaviour
         index = 0;
     }
 
+    private void FixedUpdate()
+    {
+        if(isMistaking == false)
+            GetComponent<Renderer>().material = greenMat;
+        else if (isMistaking == true)
+            GetComponent<Renderer>().material = redMat;
+    }
+
     public void ResolveProblem(string parameter)
     {
         //parmetre son = 0 ou 0.8 environ, param pitch = 100%
         if(parameter.Length <= 7) //if pitch 
-            SetParam(parameter, 100);
+            SetParam(parameter, 1);
         else SetParam(parameter, 0); // if volume
 
         isMistaking = false;
