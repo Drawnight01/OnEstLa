@@ -6,7 +6,7 @@ public class EventManager : MonoBehaviour
 {
     [SerializeField] private List<VolumePitchManager> listScripts;
     private GameObject instruments;
-    [SerializeField] private float val;
+    [SerializeField] private float valPitch, valVolume;
 
     private void Start ()
     {
@@ -25,13 +25,16 @@ public class EventManager : MonoBehaviour
 
     private void FillList()
     {
+        listScripts.Clear();
+        Debug.Log("enter fill");
         for (int i = 0; i < instruments.transform.childCount; i++)
         {
+            Debug.Log("i= " + i);
             VolumePitchManager scriptI_VP = instruments.transform.GetChild(i).GetChild(0).gameObject.GetComponent<VolumePitchManager>();
             ScaleInstruments scriptI_Scale = instruments.transform.GetChild(i).gameObject.GetComponent<ScaleInstruments>();
 
             //Debug.Log(scriptI_VP.GetMasterLevel("Volume_" + scriptI_Scale._NumInstrument));
-            if (!listScripts.Contains(scriptI_VP) && scriptI_VP.GetMasterLevel("Volume_" + scriptI_Scale._NumInstrument) > 0)
+            if (listScripts.Contains(scriptI_VP) == false && scriptI_VP.GetMasterLevel("Volume_" + scriptI_Scale._NumInstrument) > -80)
                 listScripts.Add(instruments.transform.GetChild(i).GetChild(0).gameObject.GetComponent<VolumePitchManager>());
         }
     }
@@ -47,17 +50,17 @@ public class EventManager : MonoBehaviour
 
     private void GenerateEvent()
     {
-        UpdateList();
+        //UpdateList();
 
         FillList();
 
-        int indexScript = Random.Range(0, listScripts.Count);
-        int indexProblem = Random.Range(1, 4);
+        int indexScript = (int) Random.Range(0, listScripts.Count);
+        int indexProblem = (int) Random.Range(1, 4);
 
         listScripts[indexScript].index = indexProblem;
         listScripts[indexScript].isMistaking = true;
 
-        Debug.Log("generate = "+indexProblem);
+        //Debug.Log("generate = "+indexProblem);
 
         switch (indexProblem)
         {
@@ -67,22 +70,22 @@ public class EventManager : MonoBehaviour
 
             case 1 :
                 string name1 = listScripts[indexScript].transform.parent.gameObject.GetComponent<ScaleInstruments>()._NumInstrument;
-                listScripts[indexScript].Up("Pitch_" + name1, val);
+                listScripts[indexScript].Up("Pitch_" + name1, valPitch);
                 break;
 
             case 2 :
                 string name2 = listScripts[indexScript].transform.parent.gameObject.GetComponent<ScaleInstruments>()._NumInstrument;
-                listScripts[indexScript].Down("Pitch_" + name2, val);
+                listScripts[indexScript].Down("Pitch_" + name2, valPitch);
                 break;
 
             case 3 : 
                 string name3 = listScripts[indexScript].transform.parent.gameObject.GetComponent<ScaleInstruments>()._NumInstrument;
-                listScripts[indexScript].Up("Volume_" + name3, val);
+                listScripts[indexScript].Up("Volume_" + name3, valVolume);
                 break;
 
             case 4 :
                 string name4 = listScripts[indexScript].transform.parent.gameObject.GetComponent<ScaleInstruments>()._NumInstrument;
-                listScripts[indexScript].Down("Volume_" + name4, val);
+                listScripts[indexScript].Down("Volume_" + name4, valVolume);
                 break;
         }
     }
