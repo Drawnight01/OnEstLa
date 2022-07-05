@@ -19,58 +19,63 @@ public class InputsManager : MonoBehaviour
     private void FixedUpdate ()
     {
         if (Input.GetMouseButton(0))
-            StartCoroutine(OnMouseLeft());
-        
+             StartCoroutine(OnMouseLeft());
         CheckVictory();
     }
 
     public IEnumerator OnMouseLeft ()
     {
-        if (Physics.Raycast(mainCam.ScreenToWorldPoint(Input.mousePosition), new Vector3(-100,0,0), out hit, Mathf.Infinity))
+        Debug.DrawRay(mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y)), mainCam.transform.forward);
+        if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit))
         {
-            scriptCollider = hit.collider.gameObject.GetComponent<VolumePitchManager>();
-            if(scriptCollider.isMistaking) //condition sur le fait que le groupe soit dans l'erreur
-            {
-                mousePos1 = Input.mousePosition;
-        
-                yield return new WaitForSeconds(0.03f);
+                Debug.Log(hit.collider.name);
 
-                mousePos2 = Input.mousePosition;
+                scriptCollider = hit.collider.gameObject.GetComponent<VolumePitchManager>();
 
-                xDiff = mousePos2.x - mousePos1.x;
-                yDiff = mousePos2.y - mousePos1.y;
-
-                pbIndex = scriptCollider.CheckProblem();
-                Debug.Log(pbIndex);
-
-                switch (pbIndex)
+                if(scriptCollider.isMistaking == true) //condition sur le fait que le groupe soit dans l'erreur
                 {
-                    default:
-                        Debug.Log("They ain't making any mistake");
-                    break;
+                    Debug.Log("troisieme if");
+                    mousePos1 = Input.mousePosition;
+            
+                    yield return new WaitForSeconds(0.03f);
 
-                    case 1 :
-                        if (xDiff < 0 && Mathf.Abs(yDiff) < Mathf.Abs(xDiff))
-                            scriptCollider.ResolveProblem();
+                    mousePos2 = Input.mousePosition;
+
+                    xDiff = mousePos2.x - mousePos1.x;
+                    yDiff = mousePos2.y - mousePos1.y;
+
+                    pbIndex = scriptCollider.index;
+                    Debug.Log("on mouse = "+pbIndex);
+
+                    switch (pbIndex)
+                    {
+                        default:
+                            Debug.Log("They ain't making any mistake");
                         break;
 
-                    case 2 :
-                        if (xDiff > 0 && Mathf.Abs(yDiff) < Mathf.Abs(xDiff))
-                            scriptCollider.ResolveProblem();
-                        break;
+                        case 1 :
+                            if (xDiff < 0 && Mathf.Abs(yDiff) < Mathf.Abs(xDiff))
+                                scriptCollider.ResolveProblem("Pitch_"+this.GetComponent<>()._NumInstrument);
+                            break;
 
-                    case 3 : 
-                        if (yDiff < 0 && Mathf.Abs(yDiff) > Mathf.Abs(xDiff))
-                            scriptCollider.ResolveProblem();
-                        break;
+                        case 2 :
+                            if (xDiff > 0 && Mathf.Abs(yDiff) < Mathf.Abs(xDiff))
+                                scriptCollider.ResolveProblem();
+                            break;
 
-                    case 4 :
-                        if (yDiff > 0 && Mathf.Abs(yDiff) > Mathf.Abs(xDiff))
-                            scriptCollider.ResolveProblem();
-                        break;
-                } 
-            }
-            else Debug.Log("The group ain't making any mistake");
+                        case 3 : 
+                            if (yDiff < 0 && Mathf.Abs(yDiff) > Mathf.Abs(xDiff))
+                                scriptCollider.ResolveProblem();
+                            break;
+
+                        case 4 :
+                            if (yDiff > 0 && Mathf.Abs(yDiff) > Mathf.Abs(xDiff))
+                                scriptCollider.ResolveProblem();
+                            break;
+                    } 
+                }
+                else Debug.Log("The group ain't making any mistake");
+            
         }
     }
 
