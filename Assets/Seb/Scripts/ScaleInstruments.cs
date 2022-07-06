@@ -22,6 +22,9 @@ public class ScaleInstruments : MonoBehaviour
     public GameObject fx_Note_VolumeTrop;
     public GameObject fx_Note_VolumePas;
 
+    public Light _Light;
+    public Material _LightMat;
+
     public float multiplicateur = 1f;
 
     public float valData;
@@ -55,22 +58,32 @@ public class ScaleInstruments : MonoBehaviour
             {
                 case 0:
                     FX_Selected = fx_Note_Bonne;
+                    _Light.intensity = 10f;
+                    _LightMat.SetFloat("EdgeFallOf", -2f);
                     break;
                 case 1:
                     //pitchTrop
                     FX_Selected = fx_Note_PitchTrop;
+                    _Light.intensity = 5f;
+                    _LightMat.SetFloat("EdgeFallOf", 1f);
                     break;
                 case 2:
                     //pitchpasAssez
                     FX_Selected = fx_Note_PitchPas;
+                    _Light.intensity = 5f;
+                    _LightMat.SetFloat("EdgeFallOf", 1f);
                     break;
                 case 3:
                     //VolumeTrop
                     FX_Selected = fx_Note_VolumeTrop;
+                    _Light.intensity = 5f;
+                    _LightMat.SetFloat("EdgeFallOf", 1f);
                     break;
                 case 4:
                     //volumepasassez
                     FX_Selected = fx_Note_VolumePas;
+                    _Light.intensity = 5f;
+                    _LightMat.SetFloat("EdgeFallOf", 1f);
                     break;
             }
 
