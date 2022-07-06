@@ -22,6 +22,7 @@ public class VolumePitchManager : MonoBehaviour
             GetComponent<Renderer>().material = greenMat;
         else if (isMistaking == true)
             GetComponent<Renderer>().material = redMat;
+        
     }
 
     public void ResolveProblem(string parameter)
