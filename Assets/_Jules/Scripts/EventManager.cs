@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    [SerializeField] private List<VolumePitchManager> listScripts;
+    [SerializeField] public List<VolumePitchManager> listScripts = new List<VolumePitchManager>();
     private GameObject instruments;
     [SerializeField] private float valPitch, valVolume;
 
     private void Start ()
     {
-        listScripts = new List<VolumePitchManager>();
         instruments = GameObject.Find("Instrumentals");
 
         FillList();
@@ -25,16 +24,17 @@ public class EventManager : MonoBehaviour
 
     private void FillList()
     {
-        listScripts.Clear();
+        listScripts = new List<VolumePitchManager>();
         Debug.Log("enter fill");
         for (int i = 0; i < instruments.transform.childCount; i++)
         {
             Debug.Log("i= " + i);
             VolumePitchManager scriptI_VP = instruments.transform.GetChild(i).GetChild(0).gameObject.GetComponent<VolumePitchManager>();
             ScaleInstruments scriptI_Scale = instruments.transform.GetChild(i).gameObject.GetComponent<ScaleInstruments>();
+            Transform focusedTransform = scriptI_Scale.transform;
 
             //Debug.Log(scriptI_VP.GetMasterLevel("Volume_" + scriptI_Scale._NumInstrument));
-            if (listScripts.Contains(scriptI_VP) == false && scriptI_VP.GetMasterLevel("Volume_" + scriptI_Scale._NumInstrument) > -80)
+            if (focusedTransform.localScale.x >1)//(scriptI_VP.GetMasterLevel("Volume_" + scriptI_Scale._NumInstrument) > 0)
                 listScripts.Add(instruments.transform.GetChild(i).GetChild(0).gameObject.GetComponent<VolumePitchManager>());
         }
     }
