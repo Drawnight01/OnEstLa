@@ -107,7 +107,7 @@ public class PublicBehaviour : MonoBehaviour
             timeLeft += Time.deltaTime;
             if ( timeLeft > finalTime )
             {
-                TakeDamage();
+                if(isLoosing = true) TakeDamage();
             }
         //}
     }
@@ -122,6 +122,7 @@ public class PublicBehaviour : MonoBehaviour
             {
                 isLoosing=true;
             }
+            else isLoosing = false;
         }
     }
 }
